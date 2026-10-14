@@ -1,0 +1,19 @@
+# Beispiel mosquitto.conf für den HiBattery Controller
+# Als mosquitto.conf in den Konfigurationsordner von Mosquitto legen.
+
+# Auf allen Netzwerkschnittstellen lauschen (Mosquitto 2.x
+# erlaubt ohne diese Zeile nur Verbindungen von localhost)
+listener 1883
+
+# Anmeldung ohne Passwort zulassen.
+# Nach der Umstellung aller Geräte auf false setzen.
+allow_anonymous true
+
+# Passwortdatei. Erst einkommentieren, wenn die Datei mit
+# mosquitto_passwd angelegt ist, sonst startet Mosquitto nicht.
+#password_file /mosquitto/config/passwd
+
+persistence true
+persistence_location /mosquitto/data/
+
+log_dest stdout

@@ -1,0 +1,33 @@
+# Beispiel für den Betrieb mit Docker Compose.
+# Als docker-compose.yml in denselben Ordner wie controller.py
+# und config.json legen, dann: docker compose up -d
+
+services:
+  hibattery:
+    image: python:3.12-slim
+    container_name: hibattery-controller
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      - TZ=Europe/Berlin
+    # exec, damit der Controller beim Stoppen das Signal bekommt
+    # und den Akku sauber auf "general" zurückstellt
+    entrypoint: ["sh", "-c"]
+    command: ["pip install --no-cache-dir 'paho-mqtt>=2.0' tzdata && exec python /app/controller.py"]
+    stop_grace_period: 15s
+
+  # Optional: eigener MQTT-Broker, falls noch keiner läuft.
+  # mosquitto/mosquitto.conf.example als
+  # mosquitto/config/mosquitto.conf ablegen.
+  #
+  # mosquitto:
+  #   image: eclipse-mosquitto:2
+  #   container_name: mosquitto
+  #   restart: unless-stopped
+  #   ports:
+  #     - "1883:1883"
+  #   volumes:
+  #     - ./mosquitto/config:/mosquitto/config
+  #     - ./mosquitto/data:/mosquitto/data

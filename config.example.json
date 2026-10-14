@@ -1,0 +1,59 @@
+{
+  "_hinweis": "Beispiel. Als config.json neben controller.py ablegen, Werte anpassen, Container neu starten. Fehlende Werte = Standard aus controller.py. Einträge mit _ am Anfang sind Kommentare.",
+  "mqtt": {
+    "broker": "192.168.1.10",
+    "port": 1883,
+    "username": "",
+    "password": ""
+  },
+  "geraet": {
+    "master": "MSA-000000000000",
+    "auto_control": true
+  },
+  "speicher": {
+    "kapazitaet_kwh": 10.0,
+    "soc_min": 11.0,
+    "soc_ziel_fallback": 85.0
+  },
+  "haus": {
+    "typische_last_w": 350,
+    "reserve_faktor": 1.15
+  },
+  "vorausschau": {
+    "stunden": 24,
+    "min_preisvorteil_ct": 5.0
+  },
+  "pv_anlage": {
+    "_hinweis": "azimut: 0 = Süd, -90 = Ost, +90 = West | neigung: 0 = waagerecht, 90 = senkrecht",
+    "kwp": 0.8,
+    "breitengrad": 51.0,
+    "laengengrad": 10.0,
+    "azimut": 0,
+    "neigung": 30,
+    "systemfaktor": 0.85
+  },
+  "pv_ladeziel": {
+    "gut_ab_kwh": 2.5,
+    "mittel_ab_kwh": 1.2,
+    "ziel_gut": 75.0,
+    "ziel_mittel": 85.0,
+    "ziel_schlecht": 95.0
+  },
+  "ladeleistung": {
+    "hoch_w": 1500,
+    "mittel_w": 1000,
+    "niedrig_w": 600
+  },
+  "preislogik": {
+    "guenstig_hoch_anzahl": 8,
+    "guenstig_mittel_anzahl": 16,
+    "guenstig_max_anzahl": 24,
+    "teuer_anzahl": 24
+  },
+  "pv_regelung": {
+    "strahlung_aktiv_wm2": 40,
+    "leistungsmarge_w": 30,
+    "unterdeckung_s": 60,
+    "ueberschuss_s": 30
+  }
+}
